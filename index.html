@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Naruto Shippuden — Canônicos x Fillers</title>
+<meta name="description" content="Lista dos 500 episódios de Naruto Shippuden separados entre canônicos e fillers, com controle de episódios assistidos salvo no navegador.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0e4c8;--card:#fbf5e6;--text:#1c2438;--muted:#6e644f;--line:#d8c7a1;
+  --canon:#d9480f;--canon-bg:#ffe3cc;--filler:#2f6aa3;--filler-bg:#d9e7f5;--done:#2f7d4f;
+  --navy:#1b2a4d;--navy2:#2c4170;--orange:#ff7a1a;--paper:#f6efdc;--plate:#cfd6df;
+  --display:"Dela Gothic One","Zen Kaku Gothic New",system-ui,sans-serif;
+  --body:"Zen Kaku Gothic New","Segoe UI",system-ui,-apple-system,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1525;--card:#17213a;--text:#ece6d6;--muted:#98a1b5;--line:#2c3a5a;--canon:#ff9355;--canon-bg:#3b2415;--filler:#82b4ea;--filler-bg:#1b2f48;--done:#3fae68}}
+:root[data-theme="dark"]{--bg:#0e1525;--card:#17213a;--text:#ece6d6;--muted:#98a1b5;--line:#2c3a5a;--canon:#ff9355;--canon-bg:#3b2415;--filler:#82b4ea;--filler-bg:#1b2f48;--done:#3fae68}
+html{scroll-padding-top:90px;scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.45}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+
+/* Topo */
+.hero{position:relative;overflow:hidden;background:radial-gradient(120% 140% at 85% 0%,#2f4a86 0%,var(--navy) 55%,#111c36 100%);color:var(--paper);padding:34px 20px 30px}
+.hero::before{content:"疾風伝";position:absolute;right:-10px;top:-18px;font-family:var(--display);font-size:clamp(110px,26vw,230px);line-height:1;color:#fff;opacity:.06;white-space:nowrap;pointer-events:none}
+.hero-in{position:relative;max-width:980px;margin:0 auto}
+.village{display:flex;align-items:center;gap:10px;color:#ffc999;font-weight:500;font-size:.95rem}
+.village svg{width:26px;height:26px;fill:var(--orange)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,7vw,4rem);line-height:1.02;margin:10px 0 8px;letter-spacing:.01em}
+h1 span{color:var(--orange)}
+.lead{margin:0 0 24px;max-width:46ch;color:#d6d9e6;font-size:1rem}
+
+/* Barra de progresso */
+.band{position:relative;padding:8px 0;filter:drop-shadow(0 6px 12px rgba(0,0,0,.35))}
+.cloth{height:34px;background:var(--navy2);border-radius:99px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.1)}
+.cloth i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#ff7a1a,#ffa24a);transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.mark{position:absolute;top:50%;left:0;width:48px;height:48px;display:grid;place-items:center;transform:translate(0,-50%);transition:left .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+.mark svg{width:44px;height:44px;fill:#fff;stroke:var(--navy);stroke-width:1.2;paint-order:stroke;filter:drop-shadow(0 2px 4px rgba(0,0,0,.5))}
+.stats{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:16px;font-size:.92rem;color:#c9cfe0}
+.stats strong{color:#fff;font-weight:900;font-size:1.05rem}
+.cta{margin-top:20px;display:inline-flex;align-items:center;gap:10px;background:var(--orange);color:#1b1206;border:0;border-radius:10px;padding:12px 18px;font-weight:900;box-shadow:0 4px 0 #b8510a;transition:transform .12s,box-shadow .12s}
+.cta:hover{transform:translateY(-1px)}
+.cta:active{transform:translateY(3px);box-shadow:0 1px 0 #b8510a}
+.cta small{font-weight:500;opacity:.8}
+
+.where{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:0 0 22px}
+.where>span{color:#ffc999;font-weight:700;font-size:.92rem;margin-right:2px}
+.svc{display:flex;align-items:center;gap:10px;padding:7px 14px 7px 8px;border-radius:99px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.18);color:var(--paper);text-decoration:none;line-height:1.15}
+a.svc:hover{background:rgba(255,255,255,.16)}
+.svc svg{width:34px;height:34px;flex:none;border-radius:50%}
+.svc b{display:block;font-weight:900;font-size:.95rem}
+.svc small{display:block;font-size:.76rem;color:#c9cfe0;font-weight:500}
+
+/* Filtros */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:2px solid var(--line)}
+.bar-in{max-width:980px;margin:0 auto;padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{border:2px solid var(--line);background:var(--card);padding:6px 14px;border-radius:99px;font-weight:700;font-size:.9rem}
+.chip.on{background:var(--navy);border-color:var(--navy);color:var(--paper)}
+.chip[data-f="canon"].on{background:var(--canon);border-color:var(--canon);color:#fff}
+.chip[data-f="filler"].on{background:var(--filler);border-color:var(--filler);color:#fff}
+.sw{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:.9rem;font-weight:500;cursor:pointer}
+.sw input{accent-color:var(--done);width:18px;height:18px}
+
+/* Lista de episódios */
+main{max-width:980px;margin:0 auto;padding:22px 20px 60px}
+.group{--c:var(--canon);--cb:var(--canon-bg);background:var(--card);border-top:7px solid var(--c);border-bottom:7px solid var(--c);border-left:2px solid var(--line);border-right:2px solid var(--line);border-radius:6px;margin-bottom:16px}
+.group.filler{--c:var(--filler);--cb:var(--filler-bg)}
+.ghead{display:flex;align-items:center;gap:12px;padding:12px 16px;flex-wrap:wrap}
+.toggle{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0;text-align:left}
+.toggle .arr{width:10px;height:10px;border-right:3px solid var(--c);border-bottom:3px solid var(--c);transform:rotate(45deg);transition:transform .2s;margin:-4px 2px 0}
+.group.closed .arr{transform:rotate(-45deg);margin:0 4px 0 0}
+.tag{background:var(--cb);color:var(--c);font-weight:900;font-size:.8rem;padding:3px 10px;border-radius:99px}
+.gtitle{font-family:var(--display);font-size:1.15rem}
+.gcount{color:var(--muted);font-size:.88rem;font-weight:500}
+.gact{margin-left:auto;display:flex;gap:6px}
+.mini{border:2px solid var(--line);background:transparent;padding:4px 10px;border-radius:8px;font-size:.8rem;font-weight:700;color:var(--muted)}
+.mini:hover{color:var(--text);border-color:var(--c)}
+.eps{--s:52px;display:grid;grid-template-columns:repeat(auto-fill,var(--s));justify-content:start;gap:8px;padding:4px 16px 18px}
+.group.closed .eps{display:none}
+.ep{position:relative;width:var(--s);height:var(--s);padding:0;display:grid;place-items:center;border:2px solid var(--c);background:var(--cb);color:var(--c);border-radius:10px;font-weight:900;font-size:.95rem;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;transition:transform .1s,background .15s}
+.ep:hover{transform:translateY(-2px)}
+.ep.w{background:var(--done);border-color:var(--done);color:#fff}
+.ep.w::after{content:"";position:absolute;right:4px;top:4px;width:11px;height:11px;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M12 1C8 4 4.500 8.500 5.500 14c1 4.500 5.500 8 6.500 9 1-1 5.500-4.500 6.500-9C19.500 8.500 16 4 12 1z'/%3E%3C/svg%3E")}
+.ep.next{outline:3px solid var(--orange);outline-offset:2px;animation:pulse 1.2s 3}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.empty{text-align:center;color:var(--muted);padding:40px 0;font-weight:500}
+footer{max-width:980px;margin:0 auto;padding:0 20px 40px;text-align:center;color:var(--muted);font-size:.85rem}
+.legal{display:block;max-width:60ch;margin:0 auto 6px;font-size:.78rem;opacity:.85}
+.reset{margin-top:10px;border:2px solid var(--line);background:transparent;padding:6px 14px;border-radius:8px;font-weight:700;color:var(--muted)}
+@media (max-width:520px){.eps{--s:46px;gap:6px}.ep{font-size:.88rem}.mark{width:40px;height:40px}.mark svg{width:36px;height:36px}.sw{margin-left:0}.gact{margin-left:0;width:100%}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="leaf" viewBox="0 0 24 24"><path d="M12 1C8 4 4.500 8.500 5.500 14c1 4.500 5.500 8 6.500 9 1-1 5.500-4.500 6.500-9C19.500 8.500 16 4 12 1zm0 17.500a3.500 3.500 0 1 1 3.500-3.500 2 2 0 1 1-2-2" fill-rule="evenodd"/></symbol></svg>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="village"><svg><use href="#leaf"/></svg>Vila Oculta da Folha</div>
+    <h1>Naruto <span>Shippuden</span></h1>
+    <p class="lead">Veja o que é história do mangá e o que é filler, e marque cada episódio que você já assistiu.</p>
+    <div class="where">
+      <a class="svc" href="https://www.crunchyroll.com" target="_blank" rel="noopener">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" fill="#F47521"/><circle cx="20" cy="20" r="10.500" fill="none" stroke="#fff" stroke-width="4.500"/><circle cx="25.500" cy="14.500" r="5" fill="#F47521"/><circle cx="26" cy="14" r="3.600" fill="#fff"/></svg>
+        <span><b>Crunchyroll</b><small>Com assinatura</small></span></a>
+      <div class="svc">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" fill="#141414"/><path fill="#E50914" d="M13 8h4.500v24H13zM22.500 8H27v24h-4.500z"/><path fill="#B20710" d="M13 8h4.500L27 32h-4.500z"/></svg>
+        <span><b>Netflix</b><small>Com assinatura</small></span></div>
+      <div class="svc">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" fill="#FFF200"/><text x="20" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="15" fill="#111">pluto</text></svg>
+        <span><b>Pluto TV</b><small>Grátis, com anúncios</small></span></div>
+      <div class="svc">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" fill="#E4002B"/><text x="20" y="25" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="13" fill="#fff">TCL</text></svg>
+        <span><b>TCL Channel</b><small>Dublado, grátis em Smart TVs TCL</small></span></div>
+    </div>
+    <div class="band" role="img" aria-label="Progresso geral">
+      <div class="cloth"><i id="fill"></i></div>
+      <div class="mark" id="mark"><svg><use href="#leaf"/></svg></div>
+    </div>
+    <div class="stats">
+      <span><strong id="pct">0%</strong> concluído</span>
+      <span><strong id="sWatched">0</strong> de <strong id="sTotal">500</strong> assistidos</span>
+      <span>Canônicos <strong id="sCanon">0/0</strong></span>
+      <span>Fillers <strong id="sFiller">0/0</strong></span>
+    </div>
+    <button class="cta" id="goNext">Continuar do episódio <span id="nextN">1</span> <small id="nextT"></small></button>
+  </div>
+</header>
+
+<nav class="bar" aria-label="Filtros">
+  <div class="bar-in">
+    <button class="chip on" data-f="all">Todos</button>
+    <button class="chip" data-f="canon">Canônicos</button>
+    <button class="chip" data-f="filler">Fillers</button>
+    <label class="sw"><input type="checkbox" id="hideW"> Ocultar assistidos</label>
+  </div>
+</nav>
+
+<main id="list"></main>
+
+<footer>
+  Seu progresso fica salvo neste navegador.<br>
+  <span class="legal">Projeto de fã, sem fins lucrativos e sem vínculo com os detentores dos direitos. Naruto © Masashi Kishimoto / Shueisha, TV Tokyo, Studio Pierrot. Marcas de streaming pertencem aos seus respectivos donos.</span><br>
+  <button class="reset" id="reset">Limpar progresso</button>
+</footer>
+
+<script>
+const TOTAL = 500;
+// Intervalos de episódios filler: [início, fim]
+const FILLER_RANGES = [[54,71],[91,112],[144,151],[170,171],[176,196],[223,242],[257,260],[271,271],[279,281],[284,295],[303,320],[347,361],[376,377],[388,390],[394,413],[416,417],[419,423],[427,463]];
+const KEY = "naruto-shippuden-watched-v1";
+const isFiller = n => FILLER_RANGES.some(([a,b]) => n>=a && n<=b);
+
+const groups = [];
+for (let n=1;n<=TOTAL;n++){
+  const t = isFiller(n) ? "filler" : "canon";
+  const last = groups[groups.length-1];
+  if (last && last.type===t) last.end = n; else groups.push({type:t,start:n,end:n});
+}
+
+let watched = new Set();
+try { const s = localStorage.getItem(KEY); if (s) watched = new Set(JSON.parse(s)); } catch(e){}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify([...watched])); } catch(e){} };
+
+let filter="all", hide=false, highlight=null;
+const closed = new Set();
+const $ = id => document.getElementById(id);
+// Próximo episódio: o seguinte ao último marcado (episódios pulados antes dele são ignorados)
+const nextEpisode = () => { const m = watched.size ? Math.max(...watched) : 0; return m < TOTAL ? m+1 : null; };
+
+function render(){
+  const list=$("list"); list.innerHTML=""; let shown=0;
+  groups.forEach((g,gi)=>{
+    if (filter!=="all" && g.type!==filter) return;
+    const nums=[]; for(let n=g.start;n<=g.end;n++) nums.push(n);
+    const vis = hide ? nums.filter(n=>!watched.has(n)) : nums;
+    if(!vis.length) return;
+    shown++;
+    const done = nums.filter(n=>watched.has(n)).length;
+    const el=document.createElement("section");
+    el.className="group "+g.type+(closed.has(gi)?" closed":"");
+    el.innerHTML=`<div class="ghead">
+      <button class="toggle" data-t="1" aria-expanded="${!closed.has(gi)}"><span class="arr"></span>
+      <span class="tag">${g.type==="canon"?"Canônico":"Filler"}</span>
+      <span class="gtitle">Episódios ${g.start}${g.end>g.start?" a "+g.end:""}</span></button>
+      <span class="gcount">${done} de ${nums.length}</span>
+      <div class="gact"><button class="mini" data-a="all">Marcar Todos</button><button class="mini" data-a="none">Desmarcar Todos</button></div></div>
+      <div class="eps">${vis.map(n=>`<button class="ep${watched.has(n)?" w":""}${n===highlight?" next":""}" id="ep${n}" data-n="${n}" aria-pressed="${watched.has(n)}" aria-label="Episódio ${n}">${n}</button>`).join("")}</div>`;
+    el.addEventListener("click",e=>{
+      const b=e.target.closest("button"); if(!b) return;
+      if(b.dataset.t){ closed.has(gi)?closed.delete(gi):closed.add(gi); render(); return; }
+      if(b.dataset.n){ const n=+b.dataset.n; watched.has(n)?watched.delete(n):watched.add(n); }
+      else if(b.dataset.a==="all") nums.forEach(n=>watched.add(n));
+      else if(b.dataset.a==="none") nums.forEach(n=>watched.delete(n));
+      highlight=null; save(); render();
+    });
+    list.appendChild(el);
+  });
+  if(!shown) list.innerHTML='<div class="empty">Nenhum episódio para mostrar aqui. Bom trabalho, shinobi!</div>';
+  stats();
+}
+
+function stats(){
+  let c=0,f=0,cw=0,fw=0;
+  for(let n=1;n<=TOTAL;n++){ if(isFiller(n)){f++;if(watched.has(n))fw++;} else {c++;if(watched.has(n))cw++;} }
+  const w=cw+fw, p=Math.round(w/TOTAL*100);
+  $("sWatched").textContent=w; $("sTotal").textContent=TOTAL;
+  $("sCanon").textContent=cw+"/"+c; $("sFiller").textContent=fw+"/"+f;
+  $("fill").style.width=p+"%"; $("pct").textContent=p+"%";
+  const mk=$("mark"); mk.style.left=p+"%"; mk.style.transform="translate(-"+p+"%,-50%)";
+  const nx=nextEpisode(), b=$("goNext");
+  if(nx){ $("nextN").textContent=nx; $("nextT").textContent=isFiller(nx)?"(filler)":"(canônico)"; b.style.display=""; }
+  else b.style.display="none";
+}
+
+$("goNext").addEventListener("click",()=>{
+  const n=nextEpisode(); if(!n) return;
+  filter="all"; hide=false; $("hideW").checked=false;
+  document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("on",x.dataset.f==="all"));
+  const gi=groups.findIndex(g=>n>=g.start&&n<=g.end); closed.delete(gi);
+  highlight=n; render();
+  const t=$("ep"+n); if(t) t.scrollIntoView({block:"center"});
+});
+document.querySelectorAll(".chip").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".chip").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); filter=b.dataset.f; highlight=null; render();
+}));
+$("hideW").addEventListener("change",e=>{hide=e.target.checked;render();});
+$("reset").addEventListener("click",()=>{ if(confirm("Apagar todo o progresso salvo?")){watched.clear();save();render();} });
+
+render();
+</script>
+</body>
+</html>
